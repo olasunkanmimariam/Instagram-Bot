@@ -1,8 +1,13 @@
+import os
 import selenium
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from dotenv import load_dotenv
+load_dotenv()
 import time
 
+USERNAME = os.getenv("USERNAME")
+PASSWORD = os.getenv("PASSWORD")
 
 def login(browser):
     browser.get("https://www.instagram.com/?h1=en")
@@ -11,8 +16,8 @@ def login(browser):
     password = browser.find_element_by_css_selector("[name='password']")
     login = browser.find_element_by_css_selector("button")
 
-    username.send_keys("ur_username")
-    password.send_keys("ur_password")
+    username.send_keys(USERNAME)
+    password.send_keys(PASSWORD)
     login.click()
     
     time.sleep(20)
